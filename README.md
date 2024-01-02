@@ -17,7 +17,7 @@ then,
 
 step4: install all the required libraries with the following command:
 
-    pip install -r requirements.txt
+    pip install -r installs.txt
 
 step5: run `run.py` as a Python file
 
