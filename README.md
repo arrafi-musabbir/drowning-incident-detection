@@ -22,3 +22,4 @@ step4: install all the required libraries with the following command:
 step5: run `run.py` as a Python file
 
     python run.py
+or, run `run.py` from your python-IDE (e.g. VS-CODE)
