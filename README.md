@@ -8,9 +8,13 @@ step2: clone/download the forked repository on your PC
 
 step3: open the cloned/downloaded directory with VS code
 
-step4: open the terminal on VS code and create a virtual environment with the following command
+step4: open the terminal on your directory and create a virtual environment with the following command
 
 `python -m venv venv`
+
+then,
+
+`venv\Scripts\activate`
 
 step4: install all the required libraries with the following command:
 
