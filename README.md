@@ -1,4 +1,6 @@
-Check out the live app here: [drowning-incident-detection](https://drowning-incident-detection.streamlit.app/)
+# Check out the live app here: [drowning-incident-detection](https://drowning-incident-detection.streamlit.app/)
+
+![](https://github.com/arrafi-musabbir/drowning-incident-detection/blob/main/images/img1_det.jpg)
 ### preliminary requirements (to run from Windows-10/11):
 * install `python3.10` from Microsoft-store
 
