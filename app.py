@@ -98,3 +98,32 @@ settings.auth_token = st.sidebar.text_input("Your Twilio auth_token")
 settings.to_ = st.sidebar.text_input("Your Twilio to_")
 settings.from_ = st.sidebar.text_input("Your Twilio from_")
 # settings.alertmsg = st.sidebar.text_input("Your Custom alert message", "Drowning Alerts!!! Someone is drowning!!! 🛟🌊🛟🌊🛟")
+
+footer="""<style>
+a:link , a:visited{
+color: blue;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:hover,  a:active {
+color: red;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: white;
+color: black;
+text-align: center;
+}
+</style>
+<div class="footer">
+<p><a style='display: block; text-align: center;' href="https://musabbir-arrafi.me/" target="_blank">🧑🏻‍💻 Musabbir Arrafi</a></p>
+</div>
+"""
+st.markdown(footer,unsafe_allow_html=True)
