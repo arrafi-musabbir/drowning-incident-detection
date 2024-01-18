@@ -97,6 +97,7 @@ settings.account_sid = st.sidebar.text_input("Your Twilio account_sid")
 settings.auth_token = st.sidebar.text_input("Your Twilio auth_token")
 settings.to_ = st.sidebar.text_input("Your Twilio to_")
 settings.from_ = st.sidebar.text_input("Your Twilio from_")
+settings.imgbb_api = st.sidebar.text_input("Your ImgBB api-key")
 # settings.alertmsg = st.sidebar.text_input("Your Custom alert message", "Drowning Alerts!!! Someone is drowning!!! 🛟🌊🛟🌊🛟")
 
 footer="""<style>

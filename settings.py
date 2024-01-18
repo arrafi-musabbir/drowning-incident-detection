@@ -57,4 +57,5 @@ account_sid = ''
 auth_token = ''
 from_=''
 to_=''
+imgbb_api = ''
 alertmsg = "Drowning Alerts!!! Someone is drowning!!! 🛟🌊🛟🌊🛟"

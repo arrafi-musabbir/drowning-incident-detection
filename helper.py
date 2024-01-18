@@ -3,8 +3,11 @@ import time
 import streamlit as st
 import cv2
 from pytube import YouTube
-
+import os
+import shutil
 import settings
+import glob
+
 
 
 def load_model(model_path):
@@ -44,16 +47,26 @@ def _display_detected_frames(conf, model, st_frame, image, is_display_tracking=N
     Returns:
     None
     """
+    # Specify the directory from which to delete subdirectories
+    directory = "runs/detect"
 
+    # Iterate over all entries in the directory
+    for entry in os.listdir(directory):
+        path = os.path.join(directory, entry)
+        
+        # Check if the entry is a directory
+        if os.path.isdir(path):
+            # Remove the subdirectory
+            shutil.rmtree(path)
     # Resize the image to a standard size
     image = cv2.resize(image, (720, int(720*(9/16))))
 
     # Display object tracking, if specified
     if is_display_tracking:
-        res = model.track(image, conf=conf, persist=True, tracker=tracker)
+        res = model.track(image, conf=conf, persist=True, tracker=tracker, save=True, name='predict')
     else:
         # Predict the objects in the image using the YOLOv8 model
-        res = model.predict(image, conf=conf)
+        res = model.predict(image, conf=conf, save=True, name='predict')
 
     # # Plot the detected objects on the video frame
     res_plotted = res[0].plot()
@@ -331,15 +344,36 @@ def autoplay_audio(file_path: str):
 
 
 from twilio.rest import Client
+import requests
 def send_message():
-    account_sid = settings.account_sid
-    auth_token = settings.auth_token
-    client = Client(account_sid, auth_token)
+    print("\nsending distress signal")
+    directory = "runs/detect/predict"
+    img_path = glob.glob(os.path.join(directory, "*.jpg"))[0]
+    print(img_path)
+    api_key = settings.imgbb_api
+    image_path = img_path
 
-    message = client.messages.create(
-    from_=f'whatsapp:{settings.from_}',
-    body=f'{settings.alertmsg}',
-    to=f'whatsapp:{settings.to_}'
-    )
+    with open(image_path, 'rb') as image_file:
+        response = requests.post(
+            'https://api.imgbb.com/1/upload',
+            params={'key': api_key},
+            files={'image': image_file}
+        )
 
-    print(message.sid)
+    if response.status_code == 200:
+        media_path = response.json()['data']['url']
+        try:
+            account_sid = settings.account_sid
+            auth_token = settings.auth_token
+            client = Client(account_sid, auth_token)
+            message = client.messages.create(
+                media_url=media_path,
+                from_=f'whatsapp:{settings.from_}',
+                body=f'{settings.alertmsg}',
+                to=f'whatsapp:{settings.to_}'
+            )
+            print(message.sid)
+        except Exception as e:
+            print(f"error with Twilio {e}")
+    else:
+        print("Failed to upload image")

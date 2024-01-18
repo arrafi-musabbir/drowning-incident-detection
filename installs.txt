@@ -2,3 +2,4 @@ ultralytics
 streamlit
 twilio
 pytube
+requests

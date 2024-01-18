@@ -26,3 +26,9 @@ step5: run `run.py` as a Python file
 
     python run.py
 or, run `run.py` from your python-IDE (e.g. VS-CODE)
+
+###### Optionals (to send distress signals by `Twilio`)
+- checkout this for twilio account and api setup
+[https://www.youtube.com/watch?v=O2PB6o2E8aA](https://www.youtube.com/watch?v=O2PB6o2E8aA)
+- checkout this ImgBB api setup
+[https://api.imgbb.com/](https://api.imgbb.com/)
