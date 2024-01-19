@@ -127,4 +127,4 @@ text-align: center;
 <p><a style='display: block; text-align: center;' href="https://musabbir-arrafi.me/" target="_blank">🧑🏻‍💻 Musabbir Arrafi</a></p>
 </div>
 """
-st.markdown(footer,unsafe_allow_html=True)
+# st.markdown(footer,unsafe_allow_html=True)
